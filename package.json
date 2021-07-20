@@ -10,11 +10,9 @@
   "keywords": [],
   "author": "Param Siddharth <contact@paramsid.com> (http://www.paramsid.com/)",
   "license": "ISC",
-  "devDependencies": {
-    "cross-env": "^7.0.3"
-  },
   "dependencies": {
     "@fontsource/roboto": "^4.5.0",
+    "cross-env": "^7.0.3",
     "normalize.css": "^8.0.1"
   }
 }
