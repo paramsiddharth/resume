@@ -4,7 +4,7 @@ window.addEventListener('load', () => {
 	const style = document.createElement('style');
 	style.innerHTML = `
 		@page {
-			size: ${width}px ${height}px;
+			size: ${width}px ${height + 1}px;
 		}
 	`;
 	document.head.appendChild(style);
