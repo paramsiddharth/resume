@@ -18,6 +18,10 @@ if [ -f .gitignore ]; then
 	rm -rf .gitignore
 fi
 
+# Generate Resumé PDF
+echo Generating PDF...
+npx cross-env ./generate-pdf
+
 # Commit and push
 echo Staging files...
 git add .

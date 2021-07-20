@@ -121,6 +121,7 @@ hr {
 
 #primary .section-with-photo > .photo img {
 	border-radius: 5px;
+	box-shadow: 5px 5px 13px black;
 }
 
 #primary .section-with-photo > .w-text {
@@ -191,4 +192,5 @@ hr {
 	font-size: 2.8em;
 	margin: 0;
 	margin-bottom: 7px;
+	text-shadow: 3px 3px 3px black;
 }

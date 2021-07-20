@@ -18,6 +18,10 @@ if exist .gitignore (
 	del /f /q /s .gitignore >nul || goto :error
 )
 
+::Generate Resumé PDF
+echo Generating PDF...
+call npx cross-env ./generate-pdf
+
 ::Commit and push
 echo Staging files...
 git add .                                        || goto :error
