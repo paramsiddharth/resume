@@ -19,6 +19,8 @@ a {
 }
 
 :root {
+	--hr-colour: rgb(190, 190, 190);
+	--primary-heading: rgb(59, 59, 59);
 	--heading: #03bd94;
 	--sidebar: linear-gradient(to right, #3f19ca, #5932e7);
 	--with-photo: linear-gradient(to top left, #AA1155, #da2c7a);
@@ -58,7 +60,7 @@ body {
 			"primary sidebar"
 			;
 		grid-template-rows: auto;
-		grid-template-columns: 80% 1fr;
+		grid-template-columns: 78% 1fr;
 	}
 }
 
@@ -66,22 +68,12 @@ hr {
 	display: block;
 	height: 0;
 	padding: 0;
-	background-color: rgba(236, 236, 236, 0.3);
-	width: 90%;
+	background-color: var(--hr-colour);
+	width: 95%;
 	margin: 1em auto;
 	border: none;
-	border: 1.6px solid rgba(236, 236, 236, 0.3);
+	border: 1.6px solid var(--hr-colour);
 	border-radius: 4px;
-}
-
-.header {
-	padding: 1rem;
-	font-size: 1.4em;
-	background-color: var(--heading);
-}
-
-.header-colour {
-	background: var(--heading);
 }
 
 #primary {
@@ -89,33 +81,61 @@ hr {
 	background-color: aliceblue;
 }
 
-#primary hr {
-	color: #333;
+#primary .header {
+	padding: 0.8rem 1.5rem;
+	font-size: 2em;
+	color: var(--primary-heading);
+	font-weight: bold;
 }
 
-/* #primary .section {
-	padding: 20px;
-} */
+#primary .section {
+	padding: 10px 30px;
+	font-size: 1.2em;
+}
+
+#primary .title {
+	padding-bottom: 0.5em;
+	line-height: 1.4em;
+}
+
+#primary .value {
+	font-size: 0.8em;
+	line-height: 1.3em;
+}
+
+#primary .value :is(ul, ol) {
+	transform: translateX(20px);
+}
 
 #primary .section-with-photo {
 	margin: 10px;
 	display: flex;
 	flex-direction: row;
 	padding: 30px;
-	height: 200px;
 	background: var(--with-photo);
 	color: white;
-	font-size: 2em;
+	font-size: 1.3em;
 	border-radius: 12px;
+	align-items: center;
 }
 
 #primary .section-with-photo > .photo img {
-	height: 100%;
 	border-radius: 5px;
 }
 
 #primary .section-with-photo > .w-text {
-	padding: 30px;
+	text-align: left;
+	padding: 0 30px;
+}
+
+#sidebar .header {
+	padding: 1rem;
+	font-size: 1.4em;
+	background-color: var(--heading);
+}
+
+#sidebar .header-colour {
+	background: var(--heading);
 }
 
 #sidebar {
