@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Install all production modules
+echo Installing all production modules...
+npm ci --only=production
+
+# Create .nojekyll
+echo Ensuring .nojekyll...
+if ! [ -f .nojekyll ]; then
+	touch .nojekyll
+fi
+
+# Delete .gitignore
+echo Deleting .gitignore...
+if [ -f .gitignore ]; then
+	rm -rf .gitignore
+fi
+
+# Commit and push
+echo Staging files...
+git add .
+echo Committing...
+git commit --allow-empty-message --no-edit
+echo Pushing...
+git push -f origin main:gh-pages
+
+# Reset one commit back
+echo Resetting to previous commit...
+git reset --hard HEAD~
+
+# Resetting dependencies
+echo Resetting dependencies...
+npm ci
