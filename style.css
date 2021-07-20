@@ -1,3 +1,13 @@
+@page {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	width: fit-content;
+	height: fit-content;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -35,7 +45,7 @@ body {
 	text-align: center;
 }
 
-@media only screen and (min-width: 768px) {
+@media (min-width: 768px) {
 	::-webkit-scrollbar {
 		width: 0;
 	}
@@ -100,7 +110,7 @@ hr {
 
 #sidebar .value {
 	display: inline-block;
-	transform: skewX(-8deg);
+	transform: skewX(-3deg) scale(98%);
 }
 
 #sidebar .link {

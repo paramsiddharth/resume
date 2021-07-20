@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+google-chrome --headless --disable-gpu --enable-logging --print-to-pdf="$(pwd)/resume.pdf" --run-all-compositor-stages-before-draw --window-size=1536,1000 --virtual-time-budget=20000 --no-margins "$(pwd)/index.html"
