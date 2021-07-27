@@ -64,6 +64,14 @@ body {
 	}
 }
 
+.underline {
+	text-decoration: underline;
+}
+
+.blue {
+	color: rgb(49, 49, 255);
+}
+
 hr {
 	display: block;
 	height: 0;
