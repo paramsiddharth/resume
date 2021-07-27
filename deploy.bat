@@ -18,9 +18,9 @@ if exist .gitignore (
 	del /f /q /s .gitignore >nul || goto :error
 )
 
-::Generate Resumé PDF
-echo Generating PDF...
-call npx cross-env ./generate-pdf
+::Build resumé
+echo Building resumé...
+call npm run build
 
 ::Commit and push
 echo Staging files...

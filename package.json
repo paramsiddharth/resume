@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "cross-env ./build",
     "deploy": "cross-env ./deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

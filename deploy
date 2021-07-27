@@ -18,9 +18,9 @@ if [ -f .gitignore ]; then
 	rm -rf .gitignore
 fi
 
-# Generate Resumé PDF
-echo Generating PDF...
-npx cross-env ./generate-pdf
+# Build resumé
+echo Building resumé...
+npm run build
 
 # Commit and push
 echo Staging files...
