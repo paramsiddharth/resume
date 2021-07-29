@@ -21,7 +21,7 @@ window.addEventListener('load', () => {
 	document.head.appendChild(style);
 	const newDiv = document.createElement('div');
 	newDiv.className = 'section only-screen';
-	newDiv.innerHTML = `<a class='blue underline' href='resume.pdf'>Download PDF</a>`;
+	newDiv.innerHTML = `<a class='blue underline' download='resume.pdf' href='resume.pdf'>Download PDF</a>`;
 	const firstSection = document.getElementById('first-section');
 	firstSection.parentNode.insertBefore(newDiv, firstSection.nextSibling);
 });
