@@ -120,6 +120,7 @@ hr {
 	display: flex;
 	flex-direction: row;
 	padding: 30px;
+	padding-right: 8px;
 	background: var(--with-photo);
 	color: white;
 	font-size: 1.3em;
