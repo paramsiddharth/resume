@@ -87,6 +87,7 @@ hr {
 #primary {
 	grid-area: primary;
 	background-color: aliceblue;
+	padding-bottom: 35px;
 }
 
 #primary .header {
