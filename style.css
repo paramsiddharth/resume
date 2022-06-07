@@ -204,3 +204,14 @@ hr {
 	margin-bottom: 7px;
 	text-shadow: 3px 3px 3px black;
 }
+
+@media only screen {
+	strong a {
+		color: rgb(38, 38, 235);
+	}
+
+	strong a:hover,
+	strong a:focus {
+		text-decoration: underline;
+	}
+}
