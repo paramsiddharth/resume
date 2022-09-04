@@ -2,10 +2,10 @@ name: Continuous Deployment
 
 on:
   workflow_dispatch:
-  push:
-    # paths-ignore:
-    #   - .github/**
-    branches: [main]
+  # push:
+  #   # paths-ignore:
+  #   #   - .github/**
+  #   branches: [main]
 
 jobs:
   deploy:
