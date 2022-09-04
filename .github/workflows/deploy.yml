@@ -1,7 +1,10 @@
 name: Continuous Deployment
 
 on:
+  workflow_dispatch:
   push:
+    # paths-ignore:
+    #   - .github/**
     branches: [main]
 
 jobs:
@@ -53,9 +56,11 @@ jobs:
         git config --global user.email 'actions@github.com'
         git config --global user.name  'gh-actions'
 
-        echo Staging files...
-        git add .
-        echo Committing...
-        git commit --allow-empty-message --no-edit
-        echo Pushing...
-        git push -f origin main:gh-pages
+        if [ -n "$(git status --porcelain)" ]; then
+          echo Staging files...
+          git add .
+          echo Committing...
+          git commit --allow-empty-message --no-edit
+          echo Pushing...
+          git push -f origin main:gh-pages
+        fi
