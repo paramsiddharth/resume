@@ -61,6 +61,7 @@ jobs:
           git add .
           echo Committing...
           git commit --allow-empty-message --no-edit
-          echo Pushing...
-          git push -f origin main:gh-pages
         fi
+
+        echo Pushing...
+        git push -f origin main:gh-pages
