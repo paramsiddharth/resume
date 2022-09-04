@@ -57,6 +57,18 @@ jobs:
         git config --global user.name  'gh-actions'
 
         if [ -n "$(git status --porcelain)" ]; then
+          # Create .nojekyll
+          echo Ensuring .nojekyll...
+          if ! [ -f .nojekyll ]; then
+            touch .nojekyll
+          fi
+
+          # Delete .gitignore
+          echo Deleting .gitignore...
+          if [ -f .gitignore ]; then
+            rm -rf .gitignore
+          fi
+
           echo Staging files...
           git add .
           echo Committing...
