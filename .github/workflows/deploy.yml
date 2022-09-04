@@ -18,8 +18,27 @@ jobs:
       with:
         node-version: 15.x
     
+    - name: Install Google Chrome
+      run: |
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo dpkg -i google-chrome-stable_current_amd64.deb
+    
     - name: Install dependencies
       run: npm ci
+    
+    - name: Build
+      run: |
+        # Screenshot
+        google-chrome --headless --disable-gpu --enable-logging --screenshot="$(pwd)/resume.png" --window-size=1536,1000 --no-margins "$(pwd)/index.html"
+
+        # Full PDF
+        google-chrome --headless --disable-gpu --enable-logging --print-to-pdf="$(pwd)/resume.pdf" --run-all-compositor-stages-before-draw --window-size=1536,1000 --virtual-time-budget=20000 --no-margins "$(pwd)/index.html"
+
+        # Mini PDF
+        cp style.css style.css.old
+        echo -e '\n.value { display: none; }' >> style.css
+        google-chrome --headless --disable-gpu --enable-logging --print-to-pdf="$(pwd)/resume-mini.pdf" --run-all-compositor-stages-before-draw --window-size=1536,1000 --virtual-time-budget=20000 --no-margins "$(pwd)/index.html"
+        mv style.css.old style.css
 
     - name: Set up deployment key
       uses: webfactory/ssh-agent@v0.5.0
@@ -32,4 +51,10 @@ jobs:
       run: |
         git config --global user.email 'actions@github.com'
         git config --global user.name  'gh-actions'
-        . deploy
+
+        echo Staging files...
+        git add .
+        echo Committing...
+        git commit --allow-empty-message --no-edit
+        echo Pushing...
+        git push -f origin main:gh-pages
