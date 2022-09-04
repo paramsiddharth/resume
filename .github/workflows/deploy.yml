@@ -30,15 +30,14 @@ jobs:
     - name: Install dependencies
       run: npm ci
     
-    - name: Build
+    - name: Screenshot and save thumbnail
+      run: google-chrome --headless --disable-gpu --enable-logging --screenshot="$(pwd)/resume.png" --window-size=1536,1000 --no-margins "$(pwd)/index.html"
+    
+    - name: Generate full PDF
+      run: google-chrome --headless --disable-gpu --enable-logging --print-to-pdf="$(pwd)/resume.pdf" --run-all-compositor-stages-before-draw --window-size=1536,1000 --virtual-time-budget=20000 --no-margins "$(pwd)/index.html"
+    
+    - name: Generate mini PDF
       run: |
-        # Screenshot
-        google-chrome --headless --disable-gpu --enable-logging --screenshot="$(pwd)/resume.png" --window-size=1536,1000 --no-margins "$(pwd)/index.html"
-
-        # Full PDF
-        google-chrome --headless --disable-gpu --enable-logging --print-to-pdf="$(pwd)/resume.pdf" --run-all-compositor-stages-before-draw --window-size=1536,1000 --virtual-time-budget=20000 --no-margins "$(pwd)/index.html"
-
-        # Mini PDF
         cp style.css style.css.old
         echo -e '\n.value { display: none; }' >> style.css
         google-chrome --headless --disable-gpu --enable-logging --print-to-pdf="$(pwd)/resume-mini.pdf" --run-all-compositor-stages-before-draw --window-size=1536,1000 --virtual-time-budget=20000 --no-margins "$(pwd)/index.html"
