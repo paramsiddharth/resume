@@ -98,7 +98,7 @@ jobs:
 
     - name: Generate screenshot
       run: |
-        google-chrome --headless --disable-gpu --disable-software-rasterizer --enable-logging --screenshot="$(pwd)/resume.png" --window-size=1536,1000 --no-margins "$(pwd)/index.html"
+        google-chrome --headless --enable-logging --screenshot="$(pwd)/resume.png" --window-size=1536,1000 --no-margins "$(pwd)/index.html"
 
     - name: Upload
       uses: actions/upload-artifact@v1
@@ -136,19 +136,13 @@ jobs:
 
     - name: Generate PDF
       run: |
-        google-chrome --headless --disable-gpu --disable-software-rasterizer --enable-logging --print-to-pdf="$(pwd)/resume-mini.pdf" --run-all-compositor-stages-before-draw --window-size=1536,1000 --virtual-time-budget=20000 --no-margins "$(pwd)/index.html"
+        google-chrome --headless --enable-logging --print-to-pdf="$(pwd)/resume-mini.pdf" --run-all-compositor-stages-before-draw --window-size=1536,1000 --virtual-time-budget=20000 --no-margins "$(pwd)/index.html"
 
     - name: Upload
       uses: actions/upload-artifact@v1
       with:
         name: build
         path: ./resume-mini.pdf
-
-    - name: Upload (Debug)
-      uses: actions/upload-artifact@v1
-      with:
-        name: build
-        path: ./style.css
 
   full:
     name: Full PDF
@@ -176,7 +170,7 @@ jobs:
 
     - name: Generate PDF
       run: |
-        google-chrome --headless --disable-gpu --disable-software-rasterizer --enable-logging --print-to-pdf="$(pwd)/resume.pdf" --run-all-compositor-stages-before-draw --window-size=1536,1000 --virtual-time-budget=20000 --no-margins "$(pwd)/index.html"
+        google-chrome --headless --enable-logging --print-to-pdf="$(pwd)/resume.pdf" --run-all-compositor-stages-before-draw --window-size=1536,1000 --virtual-time-budget=20000 --no-margins "$(pwd)/index.html"
 
     - name: Upload
       uses: actions/upload-artifact@v1
