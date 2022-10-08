@@ -73,6 +73,7 @@ jobs:
   thumb:
     name: Screenshot (Meta)
     runs-on: ubuntu-latest
+    needs: [mini]
 
     steps:
     - name: Checkout repository
@@ -105,6 +106,7 @@ jobs:
   mini:
     name: Mini PDF
     runs-on: ubuntu-latest
+    needs: [full]
 
     steps:
     - name: Checkout repository
