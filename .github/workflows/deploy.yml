@@ -31,10 +31,14 @@ jobs:
       run: npm ci
     
     - name: Screenshot and save thumbnail
-      run: google-chrome --headless --disable-gpu --enable-logging --screenshot="$(pwd)/resume.png" --window-size=1536,1000 --no-margins "$(pwd)/index.html"
+      run: |
+        google-chrome --headless --disable-gpu --enable-logging --screenshot="$(pwd)/resume.png" --window-size=1536,1000 --no-margins "$(pwd)/index.html"
+        sleep 10s
     
     - name: Generate full PDF
-      run: google-chrome --headless --disable-gpu --enable-logging --print-to-pdf="$(pwd)/resume.pdf" --run-all-compositor-stages-before-draw --window-size=1536,1000 --virtual-time-budget=20000 --no-margins "$(pwd)/index.html"
+      run: |
+        google-chrome --headless --disable-gpu --enable-logging --print-to-pdf="$(pwd)/resume.pdf" --run-all-compositor-stages-before-draw --window-size=1536,1000 --virtual-time-budget=20000 --no-margins "$(pwd)/index.html"
+        sleep 10s
     
     - name: Generate mini PDF
       run: |
@@ -42,13 +46,28 @@ jobs:
         echo -e '\n.value { display: none; }' >> style.css
         google-chrome --headless --disable-gpu --enable-logging --print-to-pdf="$(pwd)/resume-mini.pdf" --run-all-compositor-stages-before-draw --window-size=1536,1000 --virtual-time-budget=20000 --no-margins "$(pwd)/index.html"
         mv style.css.old style.css
+        sleep 10s
+
+    - name: Upload resumé for examination
+      uses: actions/upload-artifact@v1
+      with:
+        name: resume.pdf
+        path: ./resume.pdf
+
+    - name: Upload mini resumé for examination
+      uses: actions/upload-artifact@v1
+      with:
+        name: resume-mini.pdf
+        path: ./resume-mini.pdf
 
     - name: Set up deployment key
+      if: false # Disable
       uses: webfactory/ssh-agent@v0.5.0
       with:
         ssh-private-key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
 
     - name: Deploy
+      if: false # Disable
       env:
         USE_SSH: true
       run: |
