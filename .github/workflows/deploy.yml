@@ -26,15 +26,9 @@ jobs:
       run: npm ci --only=production
 
     - name: Download artifacts
-      uses: actions/download-artifact@v1
+      uses: actions/download-artifact@v3
       with:
         name: build
-        path: ./builds
-    
-    - name: Move assets
-      run: |
-        mv builds/* .
-        rmdir builds
 
     - name: Upload website
       uses: actions/upload-artifact@v1
