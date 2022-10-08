@@ -29,11 +29,12 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: build
+        path: ./builds
     
     - name: Move assets
       run: |
-        mv build/* .
-        rmdir build
+        mv builds/* .
+        rmdir builds
 
     - name: Upload website
       uses: actions/upload-artifact@v1
@@ -76,7 +77,7 @@ jobs:
         git push -f origin main:gh-pages
 
   thumb:
-    name: Resumé Screenshot (Meta)
+    name: Screenshot (Meta)
     runs-on: ubuntu-latest
 
     steps:
