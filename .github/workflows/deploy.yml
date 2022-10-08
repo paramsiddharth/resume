@@ -134,6 +134,7 @@ jobs:
       run: |
         cp style.css style.css.old
         echo -e '\n.value { display: none; }' >> style.css
+        cp style.css style.mod.css
         google-chrome --headless --disable-gpu --enable-logging --print-to-pdf="$(pwd)/resume-mini.pdf" --run-all-compositor-stages-before-draw --window-size=1536,1000 --virtual-time-budget=20000 --no-margins "$(pwd)/index.html"
         mv style.css.old style.css
 
@@ -142,6 +143,12 @@ jobs:
       with:
         name: build
         path: ./resume-mini.pdf
+
+    - name: Upload
+      uses: actions/upload-artifact@v1
+      with:
+        name: build
+        path: ./style.mod.css
 
   full:
     name: Full Resumé PDF
