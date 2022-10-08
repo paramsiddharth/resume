@@ -103,7 +103,7 @@ jobs:
         path: ./resume.png
 
   mini:
-    name: Mini Resumé PDF
+    name: Mini PDF
     runs-on: ubuntu-latest
 
     steps:
@@ -145,7 +145,7 @@ jobs:
         path: ./style.mod.css
 
   full:
-    name: Full Resumé PDF
+    name: Full PDF
     runs-on: ubuntu-latest
 
     steps:
