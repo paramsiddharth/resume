@@ -110,6 +110,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Modify CSS
+      run: |
+        echo -e '\n.value { display: none; }' >> style.css
+
     - name: Set up Node.js 15.x
       uses: actions/setup-node@v1
       with:
@@ -126,11 +130,7 @@ jobs:
 
     - name: Generate PDF
       run: |
-        cp style.css style.css.old
-        echo -e '\n.value { display: none; }' >> style.css
-        cp style.css style.mod.css
         google-chrome --headless --disable-gpu --enable-logging --print-to-pdf="$(pwd)/resume-mini.pdf" --run-all-compositor-stages-before-draw --window-size=1536,1000 --virtual-time-budget=20000 --no-margins "$(pwd)/index.html"
-        mv style.css.old style.css
 
     - name: Upload
       uses: actions/upload-artifact@v1
@@ -138,11 +138,11 @@ jobs:
         name: build
         path: ./resume-mini.pdf
 
-    - name: Upload
+    - name: Upload (Debug)
       uses: actions/upload-artifact@v1
       with:
         name: build
-        path: ./style.mod.css
+        path: ./style.css
 
   full:
     name: Full PDF
