@@ -91,7 +91,7 @@ hr {
 }
 
 #primary .header {
-	padding: 0.8rem 1.5rem;
+	padding: 0.3rem 1.5rem;
 	font-size: 2em;
 	color: var(--primary-heading);
 	font-weight: bold;
@@ -103,7 +103,7 @@ hr {
 }
 
 #primary .title {
-	padding-bottom: 0.5em;
+	padding-bottom: 0.3em;
 	line-height: 1.4em;
 }
 
@@ -214,4 +214,8 @@ hr {
 	strong a:focus {
 		text-decoration: underline;
 	}
+}
+
+.pb-1 {
+	padding-bottom: 8px;
 }

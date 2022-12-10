@@ -30,5 +30,5 @@ window.addEventListener('load', () => {
 	]
 	`;
 	const firstSection = document.getElementById('first-section');
-	firstSection.parentNode.insertBefore(newDiv, firstSection.nextSibling);
+	// firstSection.parentNode.insertBefore(newDiv, firstSection.nextSibling);
 });
