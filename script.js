@@ -4,7 +4,7 @@ window.addEventListener('load', () => {
 	const style = document.createElement('style');
 	style.innerHTML = `
 		@page {
-			size: ${width}px ${height + 5}px;
+			size: ${width}px ${height + 3}px;
 		}
 
 		.only-screen {
