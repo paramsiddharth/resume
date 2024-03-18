@@ -38,11 +38,22 @@ body {
 #container {
 	display: grid;
 	grid-template-areas: 
-		"sidebar"
-		"primary"
+		"primary sidebar"
+		"primary sidebar"
 		;
 	grid-template-rows: auto;
-	grid-template-columns: 1fr;
+	grid-template-columns: 78% 1fr;
+}
+
+@media only screen and (max-width: 767px) {
+	#container {
+		grid-template-areas: 
+			"sidebar"
+			"primary"
+			;
+		grid-template-rows: auto;
+		grid-template-columns: 1fr;
+	}
 }
 
 .text-center {
@@ -52,15 +63,6 @@ body {
 @media (min-width: 768px) {
 	::-webkit-scrollbar {
 		width: 0;
-	}
-
-	#container {
-		grid-template-areas: 
-			"primary sidebar"
-			"primary sidebar"
-			;
-		grid-template-rows: auto;
-		grid-template-columns: 78% 1fr;
 	}
 }
 
