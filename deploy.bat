@@ -18,9 +18,9 @@ if exist .gitignore (
 	del /f /q /s .gitignore >nul || goto :error
 )
 
-::Build resumé
-echo Building resumé...
-call npm run build
+@REM ::Build resumé
+@REM echo Building resumé...
+@REM call npm run build
 
 ::Commit and push
 echo Staging files...
